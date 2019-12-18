@@ -26,6 +26,8 @@ public class SavedStateViewModel extends ViewModel {
 
     private SavedStateHandle mState;//这个在系统kill app时会持久化存储里面的数据,以便app再起来时恢复数据.!!
     // 实际测试,验证时不好 执行系统kill呢, 手动kill又无法触发保寸数据...目前不实用.
+    // 按这里步骤可验证.https://codelabs.developers.google.com/codelabs/android-lifecycles/#6
+    // 1.先按 HOME 让app在stop状态, 2.用kill 命令杀掉进程, 再重启app, 可以保存数据.
 
     public SavedStateViewModel(SavedStateHandle savedStateHandle) {
         mState = savedStateHandle;
