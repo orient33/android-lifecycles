@@ -49,7 +49,6 @@ public class SavedStateActivity extends AppCompatActivity {
             public void onChanged(String savedString) {
                 ((TextView)findViewById(R.id.saved_vm_tv))
                         .setText(getString(R.string.saved_in_vm, savedString));
-
             }
         });
 

@@ -17,13 +17,16 @@
 package com.example.android.lifecycles.step4_solution;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,10 +37,11 @@ public class LocationActivity extends AppCompatActivity {
     private static final int REQUEST_LOCATION_PERMISSION_CODE = 1;
 
     private LocationListener mGpsListener = new MyLocationListener();
+    private TextView mTextView;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-            @NonNull int[] grantResults) {
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED
                 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
@@ -51,6 +55,7 @@ public class LocationActivity extends AppCompatActivity {
         BoundLocationManager.bindLocationListenerIn(this, mGpsListener, getApplicationContext());
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,27 +71,32 @@ public class LocationActivity extends AppCompatActivity {
         } else {
             bindLocationListener();
         }
+        mTextView = findViewById(R.id.location);
+        TextView tv = findViewById(R.id.text);
+        tv.setText("使用LiveCycleObserver, Resume注册监听, Pause时注销监听!");
     }
 
     private class MyLocationListener implements LocationListener {
         @Override
         public void onLocationChanged(Location location) {
-            TextView textView = findViewById(R.id.location);
-            textView.setText(location.getLatitude() + ", " + location.getLongitude());
+            mTextView.append("\n 纬度:" + location.getLatitude() + ", 经度:" + location.getLongitude());
         }
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
+            mTextView.append("\nstatusChanged: " + provider + ", status: " + status);
         }
 
         @Override
         public void onProviderEnabled(String provider) {
+            mTextView.append("\nproviderEnabled: " + provider);
             Toast.makeText(LocationActivity.this,
                     "Provider enabled: " + provider, Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onProviderDisabled(String provider) {
+            mTextView.append("\nproviderDisabled: " + provider);
         }
     }
 }

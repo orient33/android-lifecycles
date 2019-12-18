@@ -18,9 +18,13 @@ package com.example.android.lifecycles.step3;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.widget.TextView;
 
@@ -31,6 +35,7 @@ public class ChronoActivity3 extends AppCompatActivity {
 
     private LiveDataTimerViewModel mLiveDataTimerViewModel;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,10 @@ public class ChronoActivity3 extends AppCompatActivity {
         mLiveDataTimerViewModel = new ViewModelProvider(this).get(LiveDataTimerViewModel.class);
 
         subscribe();
+
+        TextView tv = findViewById(R.id.text);
+        tv.setText("使用 TextView控件,和含LiveData的ViewModel保持时间,在ViewModel中用Timer计时," +
+                "但未注册Observer,TODO");
     }
 
     private void subscribe() {

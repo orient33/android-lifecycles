@@ -21,9 +21,11 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,10 +36,11 @@ public class LocationActivity extends AppCompatActivity {
     private static final int REQUEST_LOCATION_PERMISSION_CODE = 1;
 
     private LocationListener mGpsListener = new MyLocationListener();
+    private TextView mTextView;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-            @NonNull int[] grantResults) {
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED
                 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
@@ -66,17 +69,20 @@ public class LocationActivity extends AppCompatActivity {
         } else {
             bindLocationListener();
         }
+        mTextView = findViewById(R.id.location);
+        TextView tv = findViewById(R.id.text);
+        tv.setText("todo 未注册,监听位置listener.");
     }
 
     private class MyLocationListener implements LocationListener {
         @Override
         public void onLocationChanged(Location location) {
-            TextView textView = findViewById(R.id.location);
-            textView.setText(location.getLatitude() + ", " + location.getLongitude());
+            mTextView.append("\n 纬度:" + location.getLatitude() + ", 经度:" + location.getLongitude());
         }
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
+            mTextView.append("statusChanged: " + provider + ", status: " + status);
         }
 
         @Override

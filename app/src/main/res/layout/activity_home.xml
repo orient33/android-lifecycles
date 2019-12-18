@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.lifecycles.HomeActivity"
+    tools:ignore="HardcodedText">
+
+    <Button
+        android:id="@+id/s1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step1" />
+
+    <Button
+        android:id="@+id/s2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step2" />
+
+    <Button
+        android:id="@+id/s3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step3" />
+
+    <Button
+        android:id="@+id/s3s"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step3 solution" />
+
+    <Button
+        android:id="@+id/s4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step4" />
+
+    <Button
+        android:id="@+id/s4s"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step4 solution" />
+
+    <Button
+        android:id="@+id/s5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step5" />
+
+    <Button
+        android:id="@+id/s5s"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step5 solution" />
+
+    <Button
+        android:id="@+id/s6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step6" />
+
+    <Button
+        android:id="@+id/s6s"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="step6 solution" />
+</LinearLayout>

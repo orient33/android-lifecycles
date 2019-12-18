@@ -41,4 +41,11 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
 
+    <TextView
+        android:id="@+id/text"
+        android:layout_below="@id/timer_textview"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        tools:text="Description !"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

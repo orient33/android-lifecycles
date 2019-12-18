@@ -18,9 +18,12 @@ package com.example.android.lifecycles.step2;
 
 import android.os.Bundle;
 import android.os.SystemClock;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+
 import android.widget.Chronometer;
+import android.widget.TextView;
 
 import com.example.android.codelabs.lifecycle.R;
 
@@ -50,5 +53,8 @@ public class ChronoActivity2 extends AppCompatActivity {
         }
 
         chronometer.start();
+
+        TextView tv = findViewById(R.id.text);
+        tv.setText("使用 Chronometer控件,开始计时. 用ViewModel保持时间, 再config变化时/后,可以保持时间.");
     }
 }

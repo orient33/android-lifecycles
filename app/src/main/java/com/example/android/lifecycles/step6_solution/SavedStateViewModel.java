@@ -24,7 +24,8 @@ public class SavedStateViewModel extends ViewModel {
 
     private static final String NAME_KEY = "name";
 
-    private SavedStateHandle mState;
+    private SavedStateHandle mState;//这个在系统kill app时会持久化存储里面的数据,以便app再起来时恢复数据.!!
+    // 实际测试,验证时不好 执行系统kill呢, 手动kill又无法触发保寸数据...目前不实用.
 
     public SavedStateViewModel(SavedStateHandle savedStateHandle) {
         mState = savedStateHandle;
